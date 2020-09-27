@@ -2,19 +2,44 @@
   <div class="flex">
     <div class="flex-1">
       <draggable tag="el-collapse" :list="list" :component-data="collapseComponentData">
-        <div class="shadow-md border-2 mb-4 bg-gray-300" v-for="item in list" :key="item.job_step_id">
+        <div
+          class="shadow-md border-2 mb-4 bg-gray-300"
+          v-for="item in list"
+          :key="item.job_step_id"
+          :name="item.job_step_id"
+        >
           <header class="p-4">
-            
-            <input class="mb-4 bg-gray-300" type="text" placeholder="Step Name" v-model="item.step_name" @change="handleChange" />
+            <input
+              class="mb-4 bg-gray-300"
+              type="text"
+              placeholder="Step Name"
+              v-model="item.step_name"
+              @change="handleChangeStepName"
+            />
 
             <el-collapse v-model="activeName" accordion>
-              <el-collapse-item v-for="(activity, idx) in item.activities" :key="idx" :title="activity.activity_name" :name="activity.job_step_activity_id">
+              <el-collapse-item
+                v-for="activity in item.activities"
+                :key="activity.job_step_activity_id"
+                :name="activity.job_step_activity_id"
+              >
+                <template slot="title">
+                  <input
+                    class="m-0"
+                    type="text"
+                    placeholder="Activity Name"
+                    v-model="activity.activity_name"
+                    @change="handleChangeActivityName"
+                  />
+                </template>
+
                 <p class="px-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias sequi vero cupiditate magnam repudiandae at rerum minus doloremque veniam possimus! Aliquid numquam corrupti recusandae. Doloremque nostrum reiciendis totam nobis hic alias, id sit itaque!
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias sequi vero cupiditate magnam
+                  repudiandae at rerum minus doloremque veniam possimus! Aliquid numquam corrupti recusandae. Doloremque
+                  nostrum reiciendis totam nobis hic alias, id sit itaque!
                 </p>
               </el-collapse-item>
             </el-collapse>
-
           </header>
         </div>
       </draggable>
@@ -41,9 +66,10 @@
 
 <script>
 /* eslint-disable */
+import 'element-ui/lib/theme-chalk/index.css'
 
 import draggable from 'vuedraggable'
-import 'element-ui/lib/theme-chalk/index.css'
+import NestedDraggable from './NestedDraggable'
 import VueJsonPretty from 'vue-json-pretty'
 
 export default {
@@ -52,7 +78,26 @@ export default {
   order: 10,
   components: {
     draggable,
+    NestedDraggable,
     VueJsonPretty,
+  },
+  methods: {
+    inputChanged(val) {
+      this.activeNames = val
+    },
+    customValueData() {
+      return {
+        componentName: 'ScreeningPlanSetup.vue',
+        title: 'Screening Plan Setup',
+        message: 'Love is the key.',
+      }
+    },
+    handleChangeStepName(stepName) {
+      console.log('stepName', stepName)
+    },
+    handleChangeActivityName(activityName) {
+      console.log('activityName', activityName)
+    },
   },
   data() {
     return {
@@ -224,21 +269,6 @@ export default {
           value: this.activeNames,
         },
       },
-    }
-  },
-  methods: {
-    inputChanged(val) {
-      this.activeNames = val
-    },
-    customValueData() {
-      return {
-        componentName: 'ScreeningPlanSetup.vue',
-        title: 'Screening Plan Setup',
-        message: 'Love is the key.',
-      }
-    },
-    handleChange(value) {
-      console.log(value)
     }
   },
 }
