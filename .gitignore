@@ -1,0 +1,84 @@
+.DS_Store
+
+### VUE
+/node_modules/
+
+node_modules/
+node_modules1/
+/vuejf/node_modules.old/
+/vuejf/dist/
+/vuejf/static/
+/vuejf/templates/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+{{#unit}}
+/vuejf/test/unit/coverage/
+{{/unit}}
+{{#e2e}}
+/vuejf/test/e2e/reports/
+selenium-debug.log
+{{/e2e}}
+/vuejf/jsconfig.json
+/webpack.config.js
+**/.idea
+
+# Editor directories and files
+*.idea
+*.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+/*.sock
+*.code-workspace
+
+### PYTHON
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+keys.py
+
+### SQL
+/sql/id_cache.db
+/sql/id_cache.db-shm
+/sql/id_cache.db-wal
+
+### DJANGO:
+*.log
+*.log.*
+local_settings.py
+/static/resumes/*
+/snippets/
+/test/
+/log/
+seg/
+
+### Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+bin/
+lib/
+pyvenv.cfg
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/

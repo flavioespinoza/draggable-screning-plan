@@ -1,11 +1,13 @@
 {
-  "name": "animated-draggable-kanban-board-with-tailwind-and-vue",
+  "name": "@flavioespinoza/draggable-list",
   "version": "0.1.0",
+  "description": "Sortable list component using vuedraggable",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "yarn run serve"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.30",
@@ -55,6 +57,5 @@
     "vue",
     "vuejs",
     "tailwindcss"
-  ],
-  "description": null
+  ]
 }

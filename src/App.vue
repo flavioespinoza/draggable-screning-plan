@@ -23,8 +23,9 @@
             />
             <i class="fa fa-close" @click="removeAt(idx)"></i>
           </div>
-          <!-- Draggable component comes from vuedraggable. It provides drag & drop functionality -->
-          <draggable
+          
+          <!-- Draggable component from vuedraggable. It provides drag & drop functionality -->
+          <Draggable
             tag="ul"
             :list="step.tasks"
             :animation="200"
@@ -33,14 +34,14 @@
             class="list-group"
           >
             <!-- Each element from here will be draggable and animated. Note :key is very important here to be unique both for draggable and animations to be smooth & consistent. -->
-            <task-card
+            <Activity
               v-for="task in step.tasks"
               :key="task.id"
               :task="task"
               class="mt-3 cursor-move"
-            ></task-card>
+            ></Activity>
             <!-- </transition-group> -->
-          </draggable>
+          </Draggable>
         </div>
       </div>
     </div>
@@ -48,8 +49,8 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
-import TaskCard from "./components/TaskCard.vue";
+import Draggable from "vuedraggable";
+import Activity from "./components/Activity.vue";
 
 let id = 3;
 
@@ -58,8 +59,8 @@ export default {
   instruction: "Drag using the handle icon",
   order: 5,
   components: {
-    TaskCard,
-    draggable,
+    Activity,
+    Draggable,
   },
   data() {
     return {
