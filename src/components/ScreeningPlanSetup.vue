@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="flex-1" style="width: 800px !important;">
+    <div class="flex-1">
       <draggable tag="el-collapse" :list="list" :component-data="collapseComponentData">
         <div
           class="shadow-md border-2 mb-4 bg-gray-300"
@@ -17,7 +17,7 @@
               @change="handleChangeStepName"
             />
 
-            <el-collapse v-model="activeName" accordion>
+            <el-collapse v-model="activeName">
               <draggable tag="el-collapse" :list="item.activities">
                 <el-collapse-item
                 v-for="activity in item.activities"
@@ -25,6 +25,7 @@
                 :name="activity.job_step_activity_id"
               >
                 <template slot="title">
+                  <i class="el-icon-sort ml-2 mr-4"></i>
                   <input
                     class="m-0"
                     type="text"
@@ -280,4 +281,9 @@ export default {
   },
 }
 </script>
-<style scoped></style>
+<style scoped>
+  input {
+    height: 24px !important;
+    padding: 4px !important;
+  }
+</style>
