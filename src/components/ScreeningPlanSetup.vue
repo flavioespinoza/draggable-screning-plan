@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="flex-1">
+    <div class="flex-1" style="width: 800px !important;">
       <draggable tag="el-collapse" :list="list" :component-data="collapseComponentData">
         <div
           class="shadow-md border-2 mb-4 bg-gray-300"
@@ -18,7 +18,8 @@
             />
 
             <el-collapse v-model="activeName" accordion>
-              <el-collapse-item
+              <draggable tag="el-collapse" :list="item.activities">
+                <el-collapse-item
                 v-for="activity in item.activities"
                 :key="activity.job_step_activity_id"
                 :name="activity.job_step_activity_id"
@@ -38,8 +39,13 @@
                   repudiandae at rerum minus doloremque veniam possimus! Aliquid numquam corrupti recusandae. Doloremque
                   nostrum reiciendis totam nobis hic alias, id sit itaque!
                 </p>
+                
               </el-collapse-item>
+              </draggable>
             </el-collapse>
+
+
+
           </header>
         </div>
       </draggable>
@@ -269,6 +275,7 @@ export default {
           value: this.activeNames,
         },
       },
+
     }
   },
 }
